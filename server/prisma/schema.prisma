@@ -1,0 +1,62 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+generator erd {
+  provider = "prisma-erd-generator"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// N
+model Habito {
+  id         String   @id @default(uuid())
+  title      String
+  created_at DateTime
+
+  diasHabitos DiaHabito[]
+  habitosDiasSemana HabitosDiasSemana[]
+
+  @@map("habitos")
+}
+
+model HabitosDiasSemana {
+  id         String @id @default(uuid())
+  habito_id  String
+  dia_semana Int
+
+  habito Habito @relation(fields: [habito_id], references: [id])
+  
+
+  @@unique([habito_id, dia_semana])
+  @@map("habitos_dias_semana")
+}
+
+// N
+model Dia {
+  id   String   @id @default(uuid())
+  data DateTime
+  diasHabitos DiaHabito[]
+
+  @@unique([data]) // indica que não posso ter duas datas idênticas salvas no meu banco.
+  @@map("dias")
+}
+
+model DiaHabito {
+  id String @id @default(uuid())
+
+  dia_id    String 
+  habito_id String
+
+  dia Dia @relation(fields: [dia_id], references: [id])
+  habito Habito @relation(fields: [habito_id], references: [id])
+
+  @@unique([dia_id, habito_id]) // Não posso ter o mesmo hábito completado duas vezes no mesmo dia.
+  @@map("dias_habitos")
+}
