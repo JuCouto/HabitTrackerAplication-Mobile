@@ -1,16 +1,18 @@
 # Projeto Tracker de hábitos.
 
-Aplicação com consumo de API em Node.Js, sistema web em React e App em React Native.
+Tracker de Hábitos é uma aplicação full stack web e mobile.
 
 ___________________________________________________________
-
+## Tecnologias utilizadas
 
 |   Back-end     | Front-end     | Mobile       |
 | :------------: | :-----------: |:-----------: |
-| Node.Js        | React         |React Native  |
-| TypeScript     | Expo          |              |
-| Fastify        | TypeScript    |              |
-| Prisma         | Tailwind      |              |
+| Node.Js        | React         | React Native |
+| TypeScript     | Expo          | Nativewind   |
+| Fastify        | HTML / CSS    |              |
+| Prisma         | TypeScript    |              |
+|                | Tailwind      |              |
+
 
 
 
