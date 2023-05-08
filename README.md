@@ -4,21 +4,13 @@ Aplicação com consumo de API em Node.Js, sistema web em React e App em React N
 
 ___________________________________________________________
 
-#### Back-end
-* Node.Js
-* TypeScript
-* Fastify
-* Prisma
 
-_____________________________________________________________
-
-#### Front-end
-* React
-* Expo
-* TypeScript
+|   Back-end     | Front-end     | Mobile       |
+| :------------: | :-----------: |:-----------: |
+| Node.Js        | React         |React Native  |
+| TypeScript     | Expo          |              |
+| Fastify        | TypeScript    |              |
+| Prisma         | Tailwind      |              |
 
 
-______________________________________________________________
 
-#### Mobile
-* React Native
