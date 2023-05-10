@@ -72,10 +72,7 @@ export async function appRoutes(app: FastifyInstance){
             habitosPossiveis,
             completedHabits
         }
-
-       
-
-
+   
     })
 
     // marcar / desmarcar hábito
@@ -135,4 +132,37 @@ export async function appRoutes(app: FastifyInstance){
         }
         
     })
+
+    // Rota vai retorna todos os hábitos salvos
+	app.get('/summary', async () => {
+        // precisa retornar = data, quantos habitos estão disponíveis nessa data, e quantos foram completados.
+        // cast = vai converter int converte para float
+        // completed = o nome que eu escolhi dar para esse selec,vai retornar os hábitos completados, vou chamar ele no front.
+        // amount = vai trazer todos os hábitos que estavam disponíveis naquele dia da semana.
+        // %w = vai retornar o dia da semana.
+		const summary = await prisma.$queryRaw`
+			SELECT 
+				D.id, 
+				D.data,
+				(
+					SELECT 
+                    
+						cast(count(*) as float) 
+					FROM dias_habitos DH
+					WHERE DH.dia_id = D.id
+				) as completed,
+				(SELECT 
+					cast(count(*) as float)
+				FROM habitos_dias_semana HWD
+				JOIN habitos H 
+					ON H.id = HWD.habito_id
+				WHERE
+					HWD.dia_semana = cast(strftime('%w', D.data/1000.0, 'unixepoch') as int)
+				AND H.created_at <= D.data
+				) as amount
+			FROM dias D
+		`
+
+		return summary
+	})
 }
