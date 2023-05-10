@@ -5,13 +5,13 @@
 ___________________________________________________________
 <h2 align="center"> Tecnologias utilizadas. </h2>
 
-|   Backend     | Frontend     | Mobile       |
-| :-----------: | :----------: |:----------:  |
-| Node.Js       | React        | React Native |
-| TypeScript    | Expo         | Nativewind   |
-| Fastify       | HTML / CSS   |              |
-| Prisma        | TypeScript   |              |
-| Zod           | Tailwind     |              |
+|   Backend     | Frontend     | Mobile       | Banco de Dados |
+| :-----------: | :----------: |:----------:  |:----------:    |
+| Node.Js       | React        | React Native | SQLite         |
+| TypeScript    | Expo         | Nativewind   |                |
+| Fastify       | HTML / CSS   |              |                |
+| Prisma        | TypeScript   |              |                |
+| Zod           | Tailwind     |              |                |
 
 
 
