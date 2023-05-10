@@ -63,8 +63,11 @@ export async function appRoutes(app: FastifyInstance){
              }
          })
              
-         const completedHabits = day?.diasHabitos.map(diasHabitos => diasHabitos.habito_id)
-         
+         // const completedHabits = day?.diasHabitos.map(diasHabitos => diasHabitos.habito_id)
+         const completedHabits =
+         day?.diasHabitos.map((diasHabitos) => {
+             return diasHabitos.habito_id
+         }) ?? []
         return {
             habitosPossiveis,
             completedHabits
@@ -75,4 +78,61 @@ export async function appRoutes(app: FastifyInstance){
 
     })
 
+    // marcar / desmarcar hábito
+    // route param => parâmetro de identificação.
+    app.patch('/habitos/:id/toggle', async (request) => {
+
+        const toogleHabitoParams = z.object({
+            id: z.string().uuid(),
+        })
+
+        const {id} = toogleHabitoParams.parse(request.params)
+
+        // Recebe a data com hora zerada.
+        const today = dayjs().startOf('day').toDate()
+
+        // Buscar a data de hoje entre a tabela de datas
+        let day = await prisma.dia.findUnique({
+            where:{
+                data: today,
+            }
+        })
+
+        // Se a data não existir, será criada.
+        if(!day){
+            day = await prisma.dia.create({
+                data:{
+                    data: today,
+                }
+            })
+        }
+
+        const diaHabito = await prisma.diaHabito.findUnique({
+            where:{
+                dia_id_habito_id:{
+                    dia_id: day.id,
+                    habito_id: id
+                }
+            }
+        })
+
+        // Se esse registro existe no banco e está completado
+        if(diaHabito){
+        // desmarca de completo
+        await prisma.diaHabito.delete({
+            where: {
+                id: diaHabito.id
+            }
+        })
+        // Completa o hábito
+        }else{
+            await prisma.diaHabito.create({
+                data:{
+                    dia_id: day.id,
+                    habito_id: id,
+                }
+            })
+        }
+        
+    })
 }
