@@ -11,7 +11,7 @@ ___________________________________________________________
 | TypeScript    | Expo         | Nativewind   |
 | Fastify       | HTML / CSS   |              |
 | Prisma        | TypeScript   |              |
-|               | Tailwind     |              |
+| Zod           | Tailwind     |              |
 
 
 
