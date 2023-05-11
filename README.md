@@ -31,7 +31,10 @@ ___________________________________________________________
   - Dayjs -> tratamento e manipulação de data.
 
 - npm install @radix-ui/react-dialog
-  - Radix-ui -> acessibilidade, os componentes são instalados separadamente. Esse componente é do modal.
+- npm install @radix-ui/react-popover
+  - Radix-ui -> auxilia na acessibilidade, por exemplo: no leitor de tela ele informa que um modal foi aberto.Os componentes são instalados separadamente. 
+
+
 
 #### React Native
 
