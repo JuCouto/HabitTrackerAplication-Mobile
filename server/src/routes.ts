@@ -63,18 +63,19 @@ export async function appRoutes(app: FastifyInstance){
              }
          })
              
-         const completedHabits = day?.diasHabitos.map(diasHabitos => diasHabitos.habito_id)
-         
+         // const completedHabits = day?.diasHabitos.map(diasHabitos => diasHabitos.habito_id)
+         const completedHabits =
+         day?.diasHabitos.map((diasHabitos) => {
+             return diasHabitos.habito_id
+         }) ?? []
         return {
             habitosPossiveis,
             completedHabits
         }
-
-       
-
-
+   
     })
 
+<<<<<<< HEAD
     // marcar/ desmarcar hábito 
 
     app.patch('/habits/:id/toggle', (request) =>{
@@ -89,4 +90,96 @@ export async function appRoutes(app: FastifyInstance){
 
         const today = dayjs().startOf('day').toDate()
     })
+=======
+    // marcar / desmarcar hábito
+    // route param => parâmetro de identificação.
+    app.patch('/habitos/:id/toggle', async (request) => {
+
+        const toogleHabitoParams = z.object({
+            id: z.string().uuid(),
+        })
+
+        const {id} = toogleHabitoParams.parse(request.params)
+
+        // Recebe a data com hora zerada.
+        const today = dayjs().startOf('day').toDate()
+
+        // Buscar a data de hoje entre a tabela de datas
+        let day = await prisma.dia.findUnique({
+            where:{
+                data: today,
+            }
+        })
+
+        // Se a data não existir, será criada.
+        if(!day){
+            day = await prisma.dia.create({
+                data:{
+                    data: today,
+                }
+            })
+        }
+
+        const diaHabito = await prisma.diaHabito.findUnique({
+            where:{
+                dia_id_habito_id:{
+                    dia_id: day.id,
+                    habito_id: id
+                }
+            }
+        })
+
+        // Se esse registro existe no banco e está completado
+        if(diaHabito){
+        // desmarca de completo
+        await prisma.diaHabito.delete({
+            where: {
+                id: diaHabito.id
+            }
+        })
+        // Completa o hábito
+        }else{
+            await prisma.diaHabito.create({
+                data:{
+                    dia_id: day.id,
+                    habito_id: id,
+                }
+            })
+        }
+        
+    })
+
+    // Rota vai retorna todos os hábitos salvos
+	app.get('/summary', async () => {
+        // precisa retornar = data, quantos habitos estão disponíveis nessa data, e quantos foram completados.
+        // cast = vai converter int converte para float
+        // completed = o nome que eu escolhi dar para esse selec,vai retornar os hábitos completados, vou chamar ele no front.
+        // amount = vai trazer todos os hábitos que estavam disponíveis naquele dia da semana.
+        // %w = vai retornar o dia da semana.
+		const summary = await prisma.$queryRaw`
+			SELECT 
+				D.id, 
+				D.data,
+				(
+					SELECT 
+                    
+						cast(count(*) as float) 
+					FROM dias_habitos DH
+					WHERE DH.dia_id = D.id
+				) as completed,
+				(SELECT 
+					cast(count(*) as float)
+				FROM habitos_dias_semana HWD
+				JOIN habitos H 
+					ON H.id = HWD.habito_id
+				WHERE
+					HWD.dia_semana = cast(strftime('%w', D.data/1000.0, 'unixepoch') as int)
+				AND H.created_at <= D.data
+				) as amount
+			FROM dias D
+		`
+
+		return summary
+	})
+>>>>>>> 1ffbfc0ab9eb03218fef650921797ee2b44fe5c4
 }
