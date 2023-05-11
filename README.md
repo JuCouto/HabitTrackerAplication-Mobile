@@ -3,7 +3,7 @@
 <p align="center">Tracker de Hábitos é uma aplicação full stack web e mobile.</p>
 
 ___________________________________________________________
- Tecnologias utilizadas. 
+### Tecnologias utilizadas. 
 
 |   Backend     | Frontend     | Mobile       | Banco de Dados |
 | :-----------: | :----------: |:----------:  |:----------:    |
