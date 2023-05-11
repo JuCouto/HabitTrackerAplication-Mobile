@@ -16,9 +16,10 @@ ___________________________________________________________
 | Zod           | Radix-UI     |              |                |
 
 
-### Bibliotecas utilizadas. 
+__________________________________________________________________________________________________________ 
 
-### React
+<details>
+<summary>Bibliotecas utilizadas React</summary>
 - npm install -D tailwindcss postcss autoprefixer     (Bibliotecas de estilização)
   - Tailwindcss -> é um bootstrap.
   - Postcss-> automatiza tarefas dentro do CSS.
@@ -34,9 +35,10 @@ ___________________________________________________________
 - npm install @radix-ui/react-popover
   - Radix-ui -> auxilia na acessibilidade, por exemplo: no leitor de tela ele informa que um modal foi aberto.Os componentes são instalados separadamente. 
 
+</details>
 
-
-#### React Native
+<details>
+<summary>Bibliotecas utilizadas React Native</summary>
 
 - npx expo install expo-font @expo-google-fonts/inter
   - instalar fontes.
@@ -63,3 +65,4 @@ ___________________________________________________________
   - Biblioteca para tratar datas. Para configurar :
   - criar pasta lib, arquivo dayjs.ts e adicionar importação no app.tsx
    
+ </details>
