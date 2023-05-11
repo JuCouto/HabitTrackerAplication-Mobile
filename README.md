@@ -16,5 +16,47 @@ ___________________________________________________________
 | Zod           |              |              |                |
 
 
+### Bibliotecas utilizadas. 
 
+### React
+- npm install -D tailwindcss postcss autoprefixer     (Bibliotecas de estilização)
+  - Tailwindcss -> é um bootstrap.
+  - Postcss-> automatiza tarefas dentro do CSS.
+  - Autoprefixer -> adiciona prefixo do browser.
+ 
+- npm i phosphor-react
+  - Phosphor -> pacote de ícones
 
+- npm i dayjs
+  - Dayjs -> tratamento e manipulação de data.
+
+- npm install @radix-ui/react-dialog
+  - Radix-ui -> acessibilidade
+
+#### React Native
+
+- npx expo install expo-font @expo-google-fonts/inter
+  - instalar fontes.
+
+- npm i nativewind
+  - com o Nativewind instalado é possível utilizar o tailwind, é um bootstrap.
+
+- npm i tailwindcss --save--dev
+  - npx taiwindcss init
+  - configurar o arquivo tailwind.config.js
+  - configurar arquivo babel.config.js
+    - É preciso typar o className para utilizar tailwind
+    - seguir as recomendações do nativewind para configurações em typescript.
+    
+- npx expo install react-native-svg
+  - Biblioteca para ler arquivo svg.
+
+- npm i react-native-svg-transformer --save-dev
+  - bilioteca para rendereizar o svg como componente
+  - criar arquivo metro.config.js
+  - criar arquivo svg.d.ts e colocar a configuração dentro dele.
+ 
+- npm install dayjs
+  - Biblioteca para tratar datas. Para configurar :
+  - criar pasta lib, arquivo dayjs.ts e adicionar importação no app.tsx
+   
