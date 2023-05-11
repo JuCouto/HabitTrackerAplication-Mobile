@@ -13,7 +13,7 @@ ___________________________________________________________
 | TypeScript    | TypeScript   | Expo         |
 | Fastify       | HTML / CSS   | Nativewind   |                |
 | Prisma        | Tailwind     |              |                |
-| Zod           |              |              |                |
+| Zod           | Radix-UI     |              |                |
 
 
 ### Bibliotecas utilizadas. 
@@ -31,7 +31,7 @@ ___________________________________________________________
   - Dayjs -> tratamento e manipulação de data.
 
 - npm install @radix-ui/react-dialog
-  - Radix-ui -> acessibilidade
+  - Radix-ui -> acessibilidade, os componentes são instalados separadamente. Esse componente é do modal.
 
 #### React Native
 
