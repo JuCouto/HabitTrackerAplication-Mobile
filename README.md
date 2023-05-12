@@ -20,7 +20,8 @@ ________________________________________________________________________________
 
 <details>
 <summary>Bibliotecas utilizadas React</summary>
-- npm install -D tailwindcss postcss autoprefixer     (Bibliotecas de estilização)
+ 
+- npm install -D tailwindcss postcss autoprefixer    (Bibliotecas de estilização)
   - Tailwindcss -> é um bootstrap.
   - Postcss-> automatiza tarefas dentro do CSS.
   - Autoprefixer -> adiciona prefixo do browser.
@@ -31,8 +32,10 @@ ________________________________________________________________________________
 - npm i dayjs
   - Dayjs -> tratamento e manipulação de data.
 
-- npm install @radix-ui/react-dialog
-- npm install @radix-ui/react-popover
+- Radix-UI
+  - npm install @radix-ui/react-dialog
+  - npm install @radix-ui/react-popover
+  - npm install @radix-ui/react-checkbox
   - Radix-ui -> auxilia na acessibilidade, por exemplo: no leitor de tela ele informa que um modal foi aberto.Os componentes são instalados separadamente. 
 
 </details>
