@@ -8,7 +8,7 @@ export function Header () {
 
   
 return (
-    <div className="w-full max-w-4xl mx-auto flex items-center justify-between gap-5">
+    <div className="w-full max-w-4xl mx-auto flex items-center justify-between gap-3">
     <img src={logoImage} alt="logo Hábitos" />
 
     <Dialog.Root>
