@@ -69,3 +69,18 @@ ________________________________________________________________________________
   - criar pasta lib, arquivo dayjs.ts e adicionar importação no app.tsx
    
  </details>
+
+<details>
+<summary>Dicas para correções de erros</summary>
+
+- Se der erro ao rodar o npx prisma studio:
+ 
+ ![image](https://github.com/JuCouto/HabitTrackerAplication-Mobile/assets/100319483/59ac91f7-b12d-4938-964f-c25e1152fd95)
+ 
+  - Verificar se a pasta dev está no arquivo e Trocar a url no `schema.prisma` para o modelo abaixo:
+ ```
+datasource db {
+  provider = "sqlite"
+  url      = "file:dev.db"
+}
+ ```
