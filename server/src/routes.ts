@@ -75,22 +75,6 @@ export async function appRoutes(app: FastifyInstance){
    
     })
 
-<<<<<<< HEAD
-    // marcar/ desmarcar hábito 
-
-    app.patch('/habits/:id/toggle', (request) =>{
-        // route param => parâmetro de identificação.
-
-        // o zod vai validar se o id está no formato correto.
-        const toggleHabitsParams = z.object({
-            id: z.string().uuid(),
-        })
-
-        const {id} = toggleHabitsParams.parse(request.params)
-
-        const today = dayjs().startOf('day').toDate()
-    })
-=======
     // marcar / desmarcar hábito
     // route param => parâmetro de identificação.
     app.patch('/habitos/:id/toggle', async (request) => {
@@ -181,5 +165,4 @@ export async function appRoutes(app: FastifyInstance){
 
 		return summary
 	})
->>>>>>> 1ffbfc0ab9eb03218fef650921797ee2b44fe5c4
 }
