@@ -2,9 +2,9 @@
 import * as Popover from '@radix-ui/react-popover';
 import { ProgressBar } from './ProgressBar';
 import clsx from 'clsx';
-import * as Checkbox from '@radix-ui/react-checkbox';
-import { Check } from 'phosphor-react';
+
 import dayjs from 'dayjs';
+import { HabitsList } from './HabitsList';
 
 interface HabitDayProps{
     date: Date
@@ -38,27 +38,11 @@ export function HabitDay({completed = 0, amount = 0, date}: HabitDayProps){
 
                 <ProgressBar progress={completedPercentage}/>
 
-                <div className="mt-6 flex flex-col gap-3">
-                    <Checkbox.Root
-                    className="flex items-center gap-3 group">
+                <HabitsList date={date}/>
 
-                        {/* Não consigo estilizar o ckeckbox Indicator, então peciso colocar uma div em volta, e estilizar a div. 
-                        A div não possui data então acrescento o group no checkbox.root para poder acessar os dados do grupo. O group é uma propriedade do tailwind*/}
-                        <div className="h-8 w-8 rounded-lg flex items-center justify-center bg-zinc-800 border-2 border-zinc-700 group-data-[state=checked]:bg-green-400 group-data-[state=checked]:border-green-400">
-                        <Checkbox.Indicator> 
-                            <Check size={20} className="text-white"/>
-                        </Checkbox.Indicator> 
-                        </div>
-                      
-
-                       <span className="font-semibold text-xl text-white leaning-tight group-data-[state=checked]:line-through group-data-[state=checked]:text-zinc-400">
-                            Beber 2L de água
-                       </span>
-                    </Checkbox.Root>
-                </div>
-             <Popover.Arrow height={8} width={16} className='fill-zinc-800'/>   
-            </Popover.Content>
-        </Popover.Portal>
+                <Popover.Arrow height={8} width={16} className='fill-zinc-800'/>   
+              </Popover.Content>
+            </Popover.Portal>
         </Popover.Root>
     )
 }
