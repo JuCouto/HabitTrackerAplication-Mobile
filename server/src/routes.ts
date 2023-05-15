@@ -161,8 +161,8 @@ export async function appRoutes(app: FastifyInstance){
 				AND H.created_at <= D.data
 				) as amount
 			FROM dias D
-		`
+		`;
 
-		return summary
+		return summary;
 	})
 }
