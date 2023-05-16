@@ -21,7 +21,7 @@ const amountOfDaysToFill = minimumSummaryDatesSize - summaryDates.length //quadr
 
 type Summary = {
     id: string;
-    date: string;
+    data: string;
     amount: number;
     completed: number;
 }[]
@@ -38,10 +38,10 @@ const [summary, setSummary] = useState<Summary>([])
     return(
         <div className="w-full flex gap-3">
             <div className="grid grid-rows-7 grid-flow-row gap-3">
-                {weekDays.map(weekDay=>{
+                {weekDays.map((weekDay,index)=>{
                     return(
                         <div 
-                        key={weekDay} 
+                        key={`${weekDay}-${index}`}
                         className="text-zinc-400 text-xl h-10 w-10 font-bold flex items-center justify-center">
                             {weekDay}
                         </div>
@@ -53,7 +53,7 @@ const [summary, setSummary] = useState<Summary>([])
             <div className="grid grid-rows-7 grid-flow-col gap-3">
                 {summaryDates.map(date=>{
                     const dayInSummary = summary.find(day => {
-                        return dayjs(date).isSame(day.date, 'day') // colocar day, para ele parar a checagem no dia da semana
+                        return dayjs(date).isSame(day.data, 'day') // colocar day, para ele parar a checagem no dia da semana
                     })
 
                     return (
