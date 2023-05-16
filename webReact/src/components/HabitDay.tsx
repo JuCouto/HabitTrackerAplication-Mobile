@@ -7,16 +7,16 @@ import dayjs from 'dayjs';
 import { HabitsList } from './HabitsList';
 
 interface HabitDayProps{
-    date: Date
+    data: Date
     completed?: number
     amount?: number
 }
 
-export function HabitDay({completed = 0, amount = 0, date}: HabitDayProps){
+export function HabitDay({completed = 0, amount = 0, data}: HabitDayProps){
     const completedPercentage = amount >0 ? Math.round((completed / amount) *100) : 0
 
-    const dayAndMonth = dayjs(date).format('DD/MM')
-    const dayOfWeek = dayjs(date).format('dddd')
+    const dayAndMonth = dayjs(data).format('DD/MM')
+    const dayOfWeek = dayjs(data).format('dddd')
     return(
         <Popover.Root>
         <Popover.Trigger
@@ -38,7 +38,7 @@ export function HabitDay({completed = 0, amount = 0, date}: HabitDayProps){
 
                 <ProgressBar progress={completedPercentage}/>
 
-                <HabitsList date={date}/>
+                <HabitsList date={data}/>
 
                 <Popover.Arrow height={8} width={16} className='fill-zinc-800'/>   
               </Popover.Content>

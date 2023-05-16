@@ -47,7 +47,7 @@ export function HabitsList({date}: HabitsListProps){
                               
         
                          <span className="font-semibold text-xl text-white leaning-tight group-data-[state=checked]:line-through group-data-[state=checked]:text-zinc-400">
-                             {habit.title}
+                             {habitos.title}
                          </span>
                     </Checkbox.Root>
                 )
