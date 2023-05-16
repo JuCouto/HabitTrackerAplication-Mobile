@@ -61,7 +61,7 @@ const [summary, setSummary] = useState<Summary>([])
                     key={date.toString()}
                     data={date}
                     amount={dayInSummary?.amount} 
-                    completed={dayInSummary?.completed} />)
+                    defaultCompleted={dayInSummary?.completed} />)
                 })}
                 
                 {amountOfDaysToFill > 0 && Array.from({length: amountOfDaysToFill}).map((_,i) =>{
