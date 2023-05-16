@@ -52,14 +52,14 @@ const [summary, setSummary] = useState<Summary>([])
 
             <div className="grid grid-rows-7 grid-flow-col gap-3">
                 {summaryDates.map(date=>{
-                    const dayInSummary = summary.find(day => {
-                        return dayjs(date).isSame(day.data, 'day') // colocar day, para ele parar a checagem no dia da semana
+                    const dayInSummary = summary.find(dia => {
+                        return dayjs(date).isSame(dia.data, 'day') // colocar day, para ele parar a checagem no dia da semana
                     })
 
                     return (
                     <HabitDay 
                     key={date.toString()}
-                    date={date}
+                    data={date}
                     amount={dayInSummary?.amount} 
                     completed={dayInSummary?.completed} />)
                 })}
